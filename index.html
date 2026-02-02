@@ -3,195 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zora OS | نظام الألعاب</title>
+    <title>Zora OS | Steam Global Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00f2fe;
-            --secondary: #4facfe;
-            --bg: #0f172a;
-            --card-bg: rgba(255, 255, 255, 0.05);
+            --steam-blue: #1b2838;
+            --steam-gradient: linear-gradient(to bottom, #1b2838, #171a21);
+            --accent: #66c0f4;
+            --card-bg: #16202d;
         }
 
         body {
             margin: 0;
             font-family: 'Cairo', sans-serif;
-            background: radial-gradient(circle at top, #1e293b, #0f172a);
+            background-color: #1b2838;
             color: white;
-            min-height: 100vh;
-            overflow-x: hidden;
         }
 
         header {
+            background: var(--steam-gradient);
+            padding: 40px 20px;
             text-align: center;
-            padding: 50px 20px;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 3px solid var(--accent);
         }
 
-        h1 {
-            font-size: 3rem;
-            margin: 0;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        h1 { font-size: 2.5rem; color: var(--accent); margin: 0; text-transform: uppercase; }
 
         .container {
             max-width: 1200px;
             margin: 40px auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 0 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px;
         }
 
         .game-card {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            transition: 0.3s;
-            backdrop-filter: blur(5px);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .game-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.2);
+            transform: scale(1.05);
+            border-color: var(--accent);
         }
 
-        .play-btn {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            color: #0f172a;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
+        .game-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
         }
 
-        /* نافذة اللعبة */
-        #game-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+        .game-info { padding: 15px; }
+
+        .game-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; }
+
+        .price-tag {
+            background: #4c6b22;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            float: left;
         }
 
-        canvas {
-            border: 2px solid var(--primary);
-            background: #000;
-            box-shadow: 0 0 20px var(--primary);
-        }
-
-        .close-btn {
-            margin-top: 20px;
+        .steam-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(to right, #47bfff, #1a44c2);
             color: white;
-            cursor: pointer;
-            text-decoration: underline;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>ZORA OS</h1>
-    <p>اضغط على "لعب" لتجربة أول لعبة حقيقية!</p>
+    <h1>ZORA STEAM STORE</h1>
+    <p>أفضل ألعاب ستيم العالمية في مكان واحد</p>
 </header>
 
 <div class="container">
     <div class="game-card">
-        <span style="font-size: 50px;">🐍</span>
-        <h3>ثعبان النيون</h3>
-        <p>اللعبة الكلاسيكية بلمسة زورا.</p>
-        <button class="play-btn" onclick="startGame()">لعب الآن</button>
-    </div>
+        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/header.jpg" class="game-img" alt="CS2">
+        <div class="game-info">
+            <div class="game-title">Counter-Strike 2</div>
+            <div class="price-tag">مجانية</div>
+            <a href="https://store.steampowered.com/app/730/CounterStrike_2/" class="steam-btn">فتح في ستيم</a>
+        </div>
     </div>
 
-<div id="game-modal">
-    <h2 id="score">النقاط: 0</h2>
-    <canvas id="snakeGame" width="400" height="400"></canvas>
-    <div class="close-btn" onclick="closeGame()">إغلاق اللعبة</div>
-    <p style="font-size: 0.8rem; margin-top: 10px;">استخدم أسهم الكيبورد للتحرك</p>
+    <div class="game-card">
+        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg" class="game-img" alt="GTA V">
+        <div class="game-info">
+            <div class="game-title">GTA V</div>
+            <div class="price-tag">$29.99</div>
+            <a href="https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/" class="steam-btn">فتح في ستيم</a>
+        </div>
+    </div>
+
+    <div class="game-card">
+        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg" class="game-img" alt="Cyberpunk 2077">
+        <div class="game-info">
+            <div class="game-title">Cyberpunk 2077</div>
+            <div class="price-tag">$59.99</div>
+            <a href="https://store.steampowered.com/app/1091500/Cyberpunk_2077/" class="steam-btn">فتح في ستيم</a>
+        </div>
+    </div>
 </div>
-
-<script>
-    const canvas = document.getElementById("snakeGame");
-    const ctx = canvas.getContext("2d");
-    let score = 0;
-    let snake = [{x: 10, y: 10}];
-    let food = {x: 15, y: 15};
-    let dx = 0, dy = 0;
-    let gameInterval;
-
-    function startGame() {
-        document.getElementById("game-modal").style.display = "flex";
-        resetGame();
-        gameInterval = setInterval(update, 100);
-    }
-
-    function closeGame() {
-        document.getElementById("game-modal").style.display = "none";
-        clearInterval(gameInterval);
-    }
-
-    function resetGame() {
-        snake = [{x: 10, y: 10}];
-        food = {x: Math.floor(Math.random()*20), y: Math.floor(Math.random()*20)};
-        dx = 1; dy = 0;
-        score = 0;
-    }
-
-    function update() {
-        const head = {x: snake[0].x + dx, y: snake[0].y + dy};
-        
-        // اصطدام بالجدران
-        if(head.x<0 || head.x>=20 || head.y<0 || head.y>=20) return gameOver();
-
-        snake.unshift(head);
-
-        if(head.x === food.x && head.y === food.y) {
-            score += 10;
-            document.getElementById("score").innerText = "النقاط: " + score;
-            food = {x: Math.floor(Math.random()*20), y: Math.floor(Math.random()*20)};
-        } else {
-            snake.pop();
-        }
-
-        draw();
-    }
-
-    function draw() {
-        ctx.fillStyle = "black";
-        ctx.fillRect(0,0,400,400);
-        
-        ctx.fillStyle = "#00f2fe";
-        snake.forEach(part => ctx.fillRect(part.x*20, part.y*20, 18, 18));
-
-        ctx.fillStyle = "#ff007f";
-        ctx.fillRect(food.x*20, food.y*20, 18, 18);
-    }
-
-    function gameOver() {
-        alert("انتهت اللعبة! نقاطك: " + score);
-        closeGame();
-    }
-
-    window.addEventListener("keydown", e => {
-        if(e.key === "ArrowUp" && dy !== 1) { dx = 0; dy = -1; }
-        if(e.key === "ArrowDown" && dy !== -1) { dx = 0; dy = 1; }
-        if(e.key === "ArrowLeft" && dx !== 1) { dx = -1; dy = 0; }
-        if(e.key === "ArrowRight" && dx !== -1) { dx = 1; dy = 0; }
-    });
-</script>
 
 </body>
 </html>
