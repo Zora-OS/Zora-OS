@@ -1,88 +1,153 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zora OS | Steam Global Search</title>
+    <title>Zora OS | Steam Global Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --accent: #66c0f4; --bg: #1b2838; }
-        body { margin: 0; font-family: 'Cairo', sans-serif; background: var(--bg); color: white; text-align: center; }
-        header { padding: 50px 20px; background: linear-gradient(to bottom, #171a21, #1b2838); border-bottom: 2px solid var(--accent); }
-        
-        /* شريط البحث */
-        .search-box { margin: 20px auto; max-width: 500px; position: relative; }
-        input { width: 100%; padding: 15px; border-radius: 30px; border: none; outline: none; font-size: 1.1rem; }
-        
+        :root {
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --bg: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Cairo', sans-serif;
+            background: radial-gradient(circle at top, #1e293b, #0f172a);
+            color: white;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
         .container {
-            max-width: 1200px; margin: 40px auto;
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px; padding: 20px;
+            max-width: 1200px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
         }
 
         .game-card {
-            background: #16202d; border-radius: 10px; overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1); transition: 0.3s;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
         }
-        .game-card:hover { transform: scale(1.03); border-color: var(--accent); }
-        .game-img { width: 100%; height: 120px; object-fit: cover; }
-        .game-info { padding: 15px; }
-        .steam-link {
-            display: inline-block; margin-top: 10px; color: var(--accent);
-            text-decoration: none; font-weight: bold;
+
+        .game-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 242, 254, 0.2);
+        }
+
+        .game-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .game-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .game-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .steam-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            color: #0f172a;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+
+        .steam-btn:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: #64748b;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>ZORA STEAM SEARCH</h1>
-    <p>ابحث عن أي لعبة </p>
-    <div class="search-box">
-        <input type="text" id="gameInput" placeholder="اكتب اسم اللعبة هنا (مثلاً: PUBG)..." oninput="searchGame()">
-    </div>
+    <h1>ZORA OS</h1>
+    <p>بوابتك لأضخم ألعاب Steam العالمية</p>
 </header>
 
-<div class="container" id="results">
-    <p>ابدأ الكتابة للبحث عن ألعابك المفضلة...</p>
+<div class="container">
+    <div class="game-card">
+        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/header.jpg" class="game-img">
+        <div class="game-info">
+            <div class="game-title">Counter-Strike 2</div>
+            <a href="https://store.steampowered.com/app/730/" target="_blank" class="steam-btn">العب الآن مجاناً</a>
+        </div>
+    </div>
+
+    <div class="game-card">
+        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/header.jpg" class="game-img">
+        <div class="game-info">
+            <div class="game-title">Elden Ring</div>
+            <a href="https://store.steampowered.com/app/1245620/" target="_blank" class="steam-btn">شراء من ستيم</a>
+        </div>
+    </div>
+
+    <div class="game-card">
+        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg" class="game-img">
+        <div class="game-info">
+            <div class="game-title">Grand Theft Auto V</div>
+            <a href="https://store.steampowered.com/app/271590/" target="_blank" class="steam-btn">استعرض اللعبة</a>
+        </div>
+    </div>
+
+    <div class="game-card">
+        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg" class="game-img">
+        <div class="game-info">
+            <div class="game-title">Cyberpunk 2077</div>
+            <a href="https://store.steampowered.com/app/1091500/" target="_blank" class="steam-btn">استعرض اللعبة</a>
+        </div>
+    </div>
 </div>
 
-<script>
-    async function searchGame() {
-        const query = document.getElementById('gameInput').value;
-        const resultsDiv = document.getElementById('results');
-        
-        if(query.length < 3) return;
-
-        // ملاحظة: ستيم لا تسمح بالطلب المباشر من المتصفح لأسباب أمنية، 
-        // سنستخدم هنا "محاكاة" لعرض كيف ستظهر النتائج أو يمكنك ربطها بـ API وسيط.
-        // حالياً سنعرض أهم الألعاب العالمية كمثال تفاعلي:
-        
-        const games = [
-            {id: 730, name: "Counter-Strike 2"},
-            {id: 570, name: "Dota 2"},
-            {id: 440, name: "Team Fortress 2"},
-            {id: 1942600, name: "PUBG: BATTLEGROUNDS"},
-            {id: 271590, name: "GTA V"},
-            {id: 1091500, name: "Cyberpunk 2077"},
-            {id: 1593500, name: "God of War"},
-            {id: 1245620, name: "Elden Ring"}
-        ];
-
-        const filtered = games.filter(g => g.name.toLowerCase().includes(query.toLowerCase()));
-        
-        resultsDiv.innerHTML = filtered.map(g => `
-            <div class="game-card">
-                <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/${g.id}/header.jpg" class="game-img">
-                <div class="game-info">
-                    <div style="font-weight:bold">${g.name}</div>
-                    <a href="https://store.steampowered.com/app/${g.id}" class="steam-link">مشاهدة في ستيم ←</a>
-                </div>
-            </div>
-        `).join('');
-    }
-</script>
+<footer>
+    &copy; 2026 Zora OS - Powered by Steam
+</footer>
 
 </body>
 </html>
-
