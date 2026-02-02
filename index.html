@@ -3,112 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zora OS | Mediafire Downloads</title>
+    <title>Zora WiFi Games | موقع الألعاب العالمي</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #00f2fe;
             --secondary: #4facfe;
-            --bg: #0f172a;
-            --card-bg: rgba(255, 255, 255, 0.05);
+            --dark-bg: #0b1120;
+            --card-bg: #1e293b;
         }
 
         body {
             margin: 0; font-family: 'Cairo', sans-serif;
-            background: radial-gradient(circle at top, #1e293b, #0f172a);
-            color: white; min-height: 100vh;
+            background-color: var(--dark-bg); color: white;
         }
 
-        header { text-align: center; padding: 50px 20px; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); }
+        /* شريط التنقل */
+        nav {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary);
+            position: sticky; top: 0; z-index: 1000;
+        }
 
-        .container {
-            max-width: 1200px; margin: 40px auto;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; padding: 0 20px;
+        .logo { font-size: 1.8rem; font-weight: bold; color: var(--primary); }
+
+        .nav-links a { color: white; text-decoration: none; margin-left: 20px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* الهيدر */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover; background-position: center;
+            padding: 100px 20px; text-align: center;
+        }
+
+        /* شبكة الألعاب */
+        .main-content {
+            max-width: 1200px; margin: 40px auto; padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px;
         }
 
         .game-card {
-            background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px; overflow: hidden; transition: 0.3s; backdrop-filter: blur(10px);
+            background: var(--card-bg); border-radius: 12px; overflow: hidden;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); transition: 0.3s;
         }
 
-        .game-img { width: 100%; height: 170px; object-fit: cover; }
+        .game-card:hover { transform: scale(1.05); }
 
-        .game-info { padding: 20px; text-align: center; }
+        .game-thumb { width: 100%; height: 160px; object-fit: cover; }
 
-        .progress-container {
-            width: 100%; height: 8px; background: #334155;
-            border-radius: 10px; margin-top: 15px; display: none; overflow: hidden;
-        }
-        .progress-bar {
-            width: 0%; height: 100%; background: var(--primary);
-            box-shadow: 0 0 10px var(--primary); transition: width 0.1s;
-        }
+        .game-details { padding: 20px; }
+        .game-details h3 { margin: 0 0 10px; font-size: 1.2rem; }
+        .game-details p { font-size: 0.85rem; color: #94a3b8; line-height: 1.5; }
 
-        .download-btn {
-            display: inline-block; background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border: none; padding: 12px 30px; border-radius: 50px;
-            color: #0f172a; font-weight: bold; cursor: pointer; margin-top: 15px;
+        .btn-download {
+            display: block; width: 100%; padding: 12px; background: var(--primary);
+            color: #0b1120; text-align: center; text-decoration: none;
+            border-radius: 6px; font-weight: bold; margin-top: 15px;
         }
 
-        .status-text { font-size: 0.8rem; margin-top: 5px; color: var(--primary); display: none; }
+        footer { text-align: center; padding: 40px; background: #070b14; margin-top: 50px; }
     </style>
 </head>
 <body>
 
+<nav>
+    <div class="logo">ZORA WIFI</div>
+    <div class="nav-links">
+        <a href="#">الرئيسية</a>
+        <a href="#">ألعاب PC</a>
+        <a href="#">ألعاب Android</a>
+        <a href="#">من نحن</a>
+    </div>
+</nav>
+
 <header>
-    <h1>ZORA DOWNLOADS</h1>
-    <p>تحميل مباشر وآمن عبر Mediafire</p>
+    <h1 style="font-size: 3rem; margin: 0;">أكبر مكتبة ألعاب WiFi مجانية</h1>
+    <p>روابط مباشرة من Mediafire بدون إعلانات مزعجة</p>
 </header>
 
-<div class="container">
+<div class="main-content">
     <div class="game-card">
-        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg" class="game-img">
-        <div class="game-info">
-            <h3>Grand Theft Auto V</h3>
-            <button class="download-btn" onclick="startDownload(this, 'https://www.mediafire.com/رابط-ملفك-هنا')">تحميل اللعبة</button>
-            <div class="progress-container"><div class="progress-bar"></div></div>
-            <div class="status-text">جاري التحويل إلى Mediafire...</div>
+        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1946180/header.jpg" class="game-thumb">
+        <div class="game-details">
+            <h3>Minecraft PE</h3>
+            <p>النسخة الكاملة للعب الجماعي مع أصدقائك عبر الواي فاي.</p>
+            <a href="رابط_ميديا_فاير" class="btn-download">تحميل من Mediafire</a>
         </div>
     </div>
 
     <div class="game-card">
-        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/header.jpg" class="game-img">
-        <div class="game-info">
-            <h3>Elden Ring</h3>
-            <button class="download-btn" onclick="startDownload(this, 'https://www.mediafire.com/رابط-ملفك-هنا')">تحميل اللعبة</button>
-            <div class="progress-container"><div class="progress-bar"></div></div>
-            <div class="status-text">جاري التحويل إلى Mediafire...</div>
+        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/945360/header.jpg" class="game-thumb">
+        <div class="game-details">
+            <h3>Among Us</h3>
+            <p>العب الآن وابحث عن الخائن في السفينة، تدعم الشبكة المحلية.</p>
+            <a href="رابط_ميديا_فاير" class="btn-download">تحميل من Mediafire</a>
         </div>
     </div>
 </div>
 
-<script>
-    function startDownload(btn, url) {
-        const card = btn.parentElement;
-        const progressBar = card.querySelector('.progress-bar');
-        const progressCont = card.querySelector('.progress-container');
-        const statusText = card.querySelector('.status-text');
-
-        btn.style.display = 'none';
-        progressCont.style.display = 'block';
-        statusText.style.display = 'block';
-
-        let width = 0;
-        const interval = setInterval(() => {
-            if (width >= 100) {
-                clearInterval(interval);
-                statusText.innerText = "اكتمل التجهيز! جاري الفتح...";
-                setTimeout(() => {
-                    window.open(url, '_blank'); // يفتح رابط Mediafire في صفحة جديدة
-                }, 500);
-            } else {
-                width += 2; // سرعة شريط التقدم
-                progressBar.style.width = width + '%';
-            }
-        }, 30); 
-    }
-</script>
+<footer>
+    <p>جميع الحقوق محفوظة لـ Zora WiFi Games &copy; 2026</p>
+</footer>
 
 </body>
 </html>
